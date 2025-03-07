@@ -29,27 +29,26 @@ android {
     }
 
     signingConfigs {
-        create("debug") {
+        getByName("debug") {
             storeFile = file("${System.getProperty("user.home")}/.android/debug.keystore")
             storePassword = "android"
             keyAlias = "androiddebugkey"
             keyPassword = "android"
         }
-        
+
         create("release") {
-                storeFile = file(System.getenv()["CM_KEYSTORE_PATH"])
-                storePassword = System.getenv()["CM_KEYSTORE_PASSWORD"]
-                keyAlias = System.getenv()["CM_KEY_ALIAS"]
-                keyPassword = System.getenv()["CM_KEY_PASSWORD"]
-            }
+            storeFile = file(System.getenv()["CM_KEYSTORE_PATH"])
+            storePassword = System.getenv()["CM_KEYSTORE_PASSWORD"]
+            keyAlias = System.getenv()["CM_KEY_ALIAS"]
+            keyPassword = System.getenv()["CM_KEY_PASSWORD"]
         }
+    }
 
     buildTypes {
-        
         getByName("debug") {
             signingConfig = signingConfigs.getByName("debug")
         }
-        
+
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
         }
