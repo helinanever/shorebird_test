@@ -29,6 +29,13 @@ android {
     }
 
     signingConfigs {
+        create("debug") {
+            storeFile = file("${System.getProperty("user.home")}/.android/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+        
         create("release") {
                 storeFile = file(System.getenv()["CM_KEYSTORE_PATH"])
                 storePassword = System.getenv()["CM_KEYSTORE_PASSWORD"]
